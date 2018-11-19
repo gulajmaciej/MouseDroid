@@ -37,7 +37,7 @@ def forward():
 	motors.setSpeeds(0, 0)
 
 @app.route('/left')
-def forward():
+def left():
     try:
         while speed < 480:
             speed += 1
@@ -48,7 +48,7 @@ def forward():
 	motors.setSpeeds(0, 0)
 
 @app.route('/right')
-def forward():
+def right():
     try:
         while speed < 480:
             speed += 1
@@ -59,7 +59,7 @@ def forward():
 	motors.setSpeeds(0, 0)
 
 @app.route('/backward')
-def forward():
+def backward():
     try:
         while speed > -480:
             speed -= 1
