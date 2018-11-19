@@ -31,7 +31,7 @@ def forward():
         while speed < 480:
             speed += 1
             motors.motor1.setSpeed(speed)
-	    motors.motor2.setSpeed(speed)
+            motors.motor2.setSpeed(speed)
             time.sleep(0.005)
     finally:
 	motors.setSpeeds(0, 0)
@@ -42,7 +42,7 @@ def forward():
         while speed < 480:
             speed += 1
             motors.motor1.setSpeed(speed)
-	    motors.motor2.setSpeed(speed / 2)
+            motors.motor2.setSpeed(speed / 2)
             time.sleep(0.005)
     finally:
 	motors.setSpeeds(0, 0)
@@ -53,7 +53,7 @@ def forward():
         while speed < 480:
             speed += 1
             motors.motor1.setSpeed(speed / 2)
-	    motors.motor2.setSpeed(speed)
+            motors.motor2.setSpeed(speed)
             time.sleep(0.005)
     finally:
 	motors.setSpeeds(0, 0)
@@ -64,7 +64,7 @@ def forward():
         while speed > -480:
             speed -= 1
             motors.motor1.setSpeed(speed / 2)
-	    motors.motor2.setSpeed(speed / 2)
+            motors.motor2.setSpeed(speed / 2)
             time.sleep(0.005)
     finally:
 	motors.setSpeeds(0, 0)
