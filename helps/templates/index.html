@@ -10,6 +10,7 @@
       margin-bottom: 25px;
     }
 </style>
+
  
 <script
   src="https://code.jquery.com/jquery-3.2.1.min.js"
@@ -147,19 +148,18 @@ document.onkeyup = function() {
 </head>
  
 </body>
- 
- 
+
 <div class="container">
   <div class="row">
     <center>
  
-       <h1>Video Streaming Demonstration</h1>
+       <h1>Rowerownia</h1>
        <img src="{{ url_for('video_feed') }}">      
  
     </center>
   </div>
 </div>
- 
+
 <!-- control buttons -->
 <div class="container">
   <div class="row">
@@ -181,6 +181,23 @@ document.onkeyup = function() {
       <button id="right" type="button" class="btn btn-default btn-lg disabled">
         <span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
       </button>
+	<br>
+      <button id="a" type="button" class="btn btn-default btn-lg enabled">
+        <span class="glyphicon glyphicon-arrow-left"></span>
+      </button>
+ 
+      <button id="w" type="button" class="btn btn-default btn-lg enabled">
+        <span class="glyphicon glyphicon-arrow-up"></span>
+      </button>
+ 
+      <button id="s" type="button" class="btn btn-default btn-lg enabled">
+        <span class="glyphicon glyphicon-arrow-down"></span>
+      </button>
+ 
+      <button id="d" type="button" class="btn btn-default btn-lg enabled">
+        <span class="glyphicon glyphicon-arrow-right"></span>
+      </button>
+	</br>
  
     </center>
  
