@@ -1,5 +1,8 @@
 from flask import Flask, render_template, Response
 from camera_pi import Camera
+from pololu_drv8835_rpi import motors
+
+motors.setSpeeds(0, 0)
 
 app = Flask(__name__)
 
@@ -24,27 +27,47 @@ def json():
 
 @app.route('/forward')
 def forward():
-    while speed < 480:
-        speed += 1
-        motors.motor1.setSpeed(speed)
-	motors.motor2.setSpeed(speed)
-        time.sleep(0.005)
+    try:
+        while speed < 480:
+            speed += 1
+            motors.motor1.setSpeed(speed)
+	    motors.motor2.setSpeed(speed)
+            time.sleep(0.005)
+    finally:
+	motors.setSpeeds(0, 0)
 
 @app.route('/left')
 def forward():
-    while speed < 480:
-        speed += 1
-        motors.motor1.setSpeed(speed)
-	motors.motor2.setSpeed(speed / 2)
-        time.sleep(0.005)
+    try:
+        while speed < 480:
+            speed += 1
+            motors.motor1.setSpeed(speed)
+	    motors.motor2.setSpeed(speed / 2)
+            time.sleep(0.005)
+    finally:
+	motors.setSpeeds(0, 0)
+
+@app.route('/right')
+def forward():
+    try:
+        while speed < 480:
+            speed += 1
+            motors.motor1.setSpeed(speed / 2)
+	    motors.motor2.setSpeed(speed)
+            time.sleep(0.005)
+    finally:
+	motors.setSpeeds(0, 0)
 
 @app.route('/backward')
 def forward():
-    while speed > -480:
-        speed -= 1
-        motors.motor1.setSpeed(speed / 2)
-	motors.motor2.setSpeed(speed)
-        time.sleep(0.005)
+    try:
+        while speed > -480:
+            speed -= 1
+            motors.motor1.setSpeed(speed / 2)
+	    motors.motor2.setSpeed(speed / 2)
+            time.sleep(0.005)
+    finally:
+	motors.setSpeeds(0, 0)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
