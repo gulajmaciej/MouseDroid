@@ -101,7 +101,7 @@ document.onkeyup = function() {
         button.className = 'btn btn-default btn-lg disabled';
  
         console.log('stop forward');
-        $.get("/forward?method=stop")
+        $.get("/stop")
       }
     }
  
@@ -113,7 +113,7 @@ document.onkeyup = function() {
         button.className = 'btn btn-default btn-lg disabled';
  
         console.log('stop backward');
-        $.get("/backward?method=stop")
+        $.get("/stop")
       }
     }
  
@@ -125,7 +125,7 @@ document.onkeyup = function() {
         button.className = 'btn btn-default btn-lg disabled';
  
         console.log('stop left');
-        $.get("/left?method=stop")
+        $.get("/stop")
       }
     }
  
@@ -137,7 +137,7 @@ document.onkeyup = function() {
         button.className = 'btn btn-default btn-lg disabled';
  
         console.log('stop right');
-        $.get("/right?method=stop")
+        $.get("/stop")
       }
     }
  
