@@ -1,6 +1,7 @@
 from flask import Flask, render_template, Response
 from camera_pi import Camera
 from pololu_drv8835_rpi import motors
+import time
 
 motors.setSpeeds(0, 0)
 
@@ -16,58 +17,68 @@ def gen(camera):
         yield (b'--frame\r\n'
                b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
-@app.route('/video_feed')
-def video_feed():
-    return Response(gen(Camera()),
-                    mimetype='multipart/x-mixed-replace; boundary=frame')
-
-@app.route('/json')
-def json():
-    return render_template('json.html')
+#@app.route('/video_feed')
+#def video_feed():
+#    return Response(gen(Camera()),
+#                    mimetype='multipart/x-mixed-replace; boundary=frame')
 
 @app.route('/forward')
 def forward():
+    speed = 360
     try:
-        while speed < 480:
-            speed += 1
-            motors.motor1.setSpeed(speed)
-            motors.motor2.setSpeed(speed)
-            time.sleep(0.005)
+        print("forward speed: " + str(speed))
+        speed += 1
+        motors.motor1.setSpeed(speed)
+        motors.motor2.setSpeed(speed)
+        time.sleep(0.005)
     finally:
-	motors.setSpeeds(0, 0)
+        motors.setSpeeds(0, 0)
+    
+    return ('OK')
 
 @app.route('/left')
 def left():
+    speed = 360
     try:
-        while speed < 480:
-            speed += 1
-            motors.motor1.setSpeed(speed)
-            motors.motor2.setSpeed(speed / 2)
-            time.sleep(0.005)
+#        while speed < 480:
+        print("left speed: " + str(speed))
+        speed += 1
+        motors.motor1.setSpeed(speed)
+        motors.motor2.setSpeed(speed / 2)
+        time.sleep(0.005)
     finally:
-	motors.setSpeeds(0, 0)
+        motors.setSpeeds(0, 0)
+
+    return ('OK')
 
 @app.route('/right')
 def right():
+    speed = 360
     try:
-        while speed < 480:
-            speed += 1
-            motors.motor1.setSpeed(speed / 2)
-            motors.motor2.setSpeed(speed)
-            time.sleep(0.005)
+        print("right speed: " + str(speed))
+        speed += 1
+        motors.motor1.setSpeed(speed / 2)
+        motors.motor2.setSpeed(speed)
+        time.sleep(0.005)
     finally:
-	motors.setSpeeds(0, 0)
+        motors.setSpeeds(0, 0)
+
+    return ('OK')
 
 @app.route('/backward')
 def backward():
+    speed = 360
     try:
-        while speed > -480:
-            speed -= 1
-            motors.motor1.setSpeed(speed / 2)
-            motors.motor2.setSpeed(speed / 2)
-            time.sleep(0.005)
+        print("back speed: " + str(speed))
+        speed -= 1
+        motors.motor1.setSpeed(speed / 2)
+        motors.motor2.setSpeed(speed / 2)
+        time.sleep(0.005)
     finally:
-	motors.setSpeeds(0, 0)
+        motors.setSpeeds(0, 0)
+        
+    return ('OK')
+
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
