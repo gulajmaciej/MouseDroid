@@ -2,6 +2,7 @@ from flask import Flask, render_template, Response
 from camera_pi import Camera
 from pololu_drv8835_rpi import motors
 import time
+import thread
 
 motors.setSpeeds(0, 0)
 
@@ -82,3 +83,4 @@ def backward():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
+    thread.start_new_thread( video_feed())
