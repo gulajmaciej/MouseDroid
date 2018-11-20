@@ -28,49 +28,41 @@ class Control(threading.Thread):
     @app.route('/forward')
     def forward():
         speed = 360
-        try:
-            print("forward speed: " + str(speed))
-            motors.motor1.setSpeed(speed)
-            motors.motor2.setSpeed(speed)
-            time.sleep(0.005)
-        finally:
-            motors.setSpeeds(0, 0)
+        print("forward speed: " + str(speed))
+        motors.motor1.setSpeed(speed)
+        motors.motor2.setSpeed(speed)
+        time.sleep(0.005)
+
         return ('OK')
 
     @app.route('/left')
     def left():
         speed = 360
-        try:
-            print("left speed: " + str(speed))
-            motors.motor1.setSpeed(speed)
-            motors.motor2.setSpeed(speed / 2)
-            time.sleep(0.005)
-        finally:
-            motors.setSpeeds(0, 0)
+        print("left speed: " + str(speed))
+        motors.motor1.setSpeed(speed)
+        motors.motor2.setSpeed(speed / 2)
+        time.sleep(0.005)
+
         return ('OK')
 
     @app.route('/right')
     def right():
         speed = 360
-        try:
-            print("right speed: " + str(speed))
-            motors.motor1.setSpeed(speed / 2)
-            motors.motor2.setSpeed(speed)
-            time.sleep(0.005)
-        finally:
-            motors.setSpeeds(0, 0)
+        print("right speed: " + str(speed))
+        motors.motor1.setSpeed(speed / 2)
+        motors.motor2.setSpeed(speed)
+        time.sleep(0.005)
+
         return ('OK')
 
     @app.route('/backward')
     def backward():
         speed = -360
-        try:
-            print("back speed: " + str(speed))
-            motors.motor1.setSpeed(speed / 2)
-            motors.motor2.setSpeed(speed / 2)
-            time.sleep(0.005)
-        finally:
-            motors.setSpeeds(0, 0)
+        print("back speed: " + str(speed))
+        motors.motor1.setSpeed(speed / 2)
+        motors.motor2.setSpeed(speed / 2)
+        time.sleep(0.005)
+
         return ('OK')
 
     @app.route('/stop')
@@ -80,7 +72,7 @@ class Control(threading.Thread):
         motors.motor1.setSpeed(speed)
         motors.motor2.setSpeed(speed)
         
-        Return('OK')
+        return('OK')
         
 if __name__ == '__main__':
    
@@ -99,4 +91,4 @@ if __name__ == '__main__':
     thread5.start()
     thread6.start()
     thread7.start()
-    app.run(host='0.0.0.0', debug=True, thread =True)
+    app.run(host='0.0.0.0', debug=True, threaded =True)
