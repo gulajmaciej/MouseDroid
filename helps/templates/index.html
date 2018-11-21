@@ -140,9 +140,32 @@ document.onkeyup = function() {
         $.get("/stop")
       }
     }
+	
  
 };
+ function mouseDown() {
+            if(!forward_fired && !backward_fired) {
+            forward_fired = true;
  
+            button = document.getElementById('up');
+            button.className = 'btn btn-success btn-lg disabled';
+ 
+            console.log('start forward');
+            $.get("/forward")
+        }
+}
+
+function mouseUp() {
+         if(right_fired) {
+        right_fired = false;
+ 
+        button = document.getElementById('right');
+        button.className = 'btn btn-default btn-lg disabled';
+ 
+        console.log('stop right');
+        $.get("/stop")
+	 }
+}
 </script>
  
 </head>
@@ -186,7 +209,7 @@ document.onkeyup = function() {
         <span class="glyphicon glyphicon-arrow-left"></span>
       </button>
  
-      <button id="w" type="button" class="btn btn-default btn-lg enabled">
+      <button id="w" type="button" class="btn btn-default btn-lg enabled" onmousedown="mouseDown()" onmouseup="mouseUp()">
         <span class="glyphicon glyphicon-arrow-up"></span>
       </button>
  
